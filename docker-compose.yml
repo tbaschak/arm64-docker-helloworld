@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  test_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platform: linux/arm64
+    image: my-arm64-helloworld
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
